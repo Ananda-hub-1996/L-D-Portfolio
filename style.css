@@ -21,6 +21,22 @@
   --ease: cubic-bezier(.22,.61,.36,1);
 }
 
+/* Dark editorial panel — re-themes any descendant that uses the tokens above.
+   Applied to alternating case chapters and the closing contact section. */
+.dark-panel{
+  --bg:            #17140F;
+  --bg-alt:        #241F17;
+  --ink:           #F4F1E9;
+  --ink-soft:      #B7B2A5;
+  --line:          #3A362C;
+  --blue:          #8FB4DE;
+  --blue-soft:     #22344A;
+  --amber:         #D9A868;
+  --amber-soft:    #3A2E1C;
+  background: var(--bg);
+  color: var(--ink);
+}
+
 /* ============================================================
    RESET & BASE
    ============================================================ */
@@ -219,8 +235,6 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   letter-spacing: -0.01em;
 }
-.section-title.small-title{ font-size: clamp(1.4rem, 3vw, 2rem); }
-.section-subtitle{ color: var(--ink-soft); font-size:15px; margin-top:4px; }
 
 /* statement blocks reused across sections */
 .statement-line{
@@ -234,7 +248,20 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
 /* ============================================================
    01 — HOW I THINK
    ============================================================ */
-.thinking-statement{ margin-bottom: 60px; }
+.thinking-statement{ margin-bottom: 60px; text-align:center; }
+
+.request-statement{
+  text-align:center;
+  max-width: 640px;
+  margin: 0 auto 64px;
+}
+.request-support{
+  margin-top: 24px;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+.eyebrow-center{ text-align:center; display:block; margin-bottom: 18px; }
 
 .bridge-model{
   display:flex; align-items:stretch; justify-content:center; gap: 0;
@@ -305,7 +332,7 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
 /* ---------- circular / iterative thinking model ---------- */
 .circle-model{
   position: relative;
-  margin: 0 auto;
+  margin: 12px auto 0;
 }
 .circle-ring{
   position:absolute; inset:0;
@@ -377,13 +404,6 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
 }
 
 .request-block{ margin-bottom: 88px; }
-.request-lead{
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
-  max-width: 20ch;
-  margin-bottom: 36px;
-}
 .request-grid{ display:flex; flex-direction:column; gap:0; }
 .request-pair{
   display:grid;
@@ -406,55 +426,86 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
 /* ============================================================
    02 — EVOLUTION
    ============================================================ */
-.evolution-statement{ margin-bottom: 76px; }
-.evolution-timeline{
-  display:flex; flex-wrap:wrap; gap: 0;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  margin-bottom: 56px;
+.evolution-statement{ margin-bottom: 76px; text-align:center; }
+
+.evo-path{
+  display:flex; align-items:flex-end; gap:0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 28px;
+  padding: 0 0 0;
 }
-.evo-step{
-  flex: 1 1 150px;
-  padding: 30px 18px 30px 0;
+.evo-stage{
+  flex: 1 1 0;
+  display:flex; flex-direction:column; justify-content:flex-end; align-items:center;
+  text-align:center;
   border-left: 1px solid var(--line);
-  position:relative;
+  padding: 0 14px 22px;
+  gap: 14px;
 }
-.evo-step:first-child{ border-left:0; padding-left:0; }
-.evo-marker{
-  display:block; width:8px; height:8px; border-radius:50%;
-  background: var(--ink-soft);
-  margin-bottom: 18px;
+.evo-stage:first-child{ border-left:0; }
+.evo-bar{
+  display:block; width:100%; border-radius:0;
+  background: var(--bg-alt);
 }
-.evo-step-current .evo-marker{ background: var(--blue); width:12px; height:12px; }
-.evo-label{
-  font-family: var(--font-head);
-  font-weight: 700;
-  font-size: 14.5px;
-  line-height:1.3;
-  display:block;
+.evo-bar-1{ height: 26px; }
+.evo-bar-2{ height: 44px; }
+.evo-bar-3{ height: 64px; }
+.evo-bar-4{ height: 86px; }
+.evo-bar-5{ height: 112px; background: var(--blue-soft); }
+.evo-name{
+  font-family: var(--font-head); font-weight:700; font-size: 13.5px; line-height:1.3;
 }
-.evo-step-current .evo-label{ color: var(--blue); }
+.evo-stage-current .evo-name{ color: var(--blue); }
+.evo-tagline{ font-size: 12px; color: var(--ink-soft); line-height:1.35; }
 
 @media (max-width: 780px){
-  .evolution-timeline{ flex-direction:column; }
-  .evo-step{ border-left:0; border-top:1px solid var(--line); padding: 20px 0; }
-  .evo-step:first-child{ border-top:0; }
+  .evo-path{ flex-direction:column; align-items:stretch; border-bottom:0; }
+  .evo-stage{
+    flex-direction:row; align-items:center; justify-content:flex-start;
+    border-left:0; border-top:1px solid var(--line);
+    padding: 18px 0; text-align:left; gap: 18px;
+  }
+  .evo-stage:first-child{ border-top:0; }
+  .evo-bar{ width: 8px; flex-shrink:0; }
+  .evo-bar-1{ height:8px; } .evo-bar-2{ height:8px; } .evo-bar-3{ height:8px; }
+  .evo-bar-4{ height:8px; } .evo-bar-5{ height:8px; border-radius:50%; }
 }
 
-.evolution-narrative p{ max-width: 68ch; color: var(--ink-soft); font-size:17px; }
+.evolution-narrative{
+  max-width: 60ch; color: var(--ink-soft); font-size:16px; margin: 0 auto;
+  text-align:center;
+}
 
 /* ============================================================
-   03 — WHERE I'M HEADED
+   03 — THE WORK I WANT TO TAKE ON
    ============================================================ */
-.direction-transition{ text-align:center; margin-bottom: 84px; }
-.direction-down{
-  display:block; font-size: 28px; color: var(--blue); margin: 14px 0;
+.direction-lead{
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+  line-height: 1.4;
+  max-width: 62ch;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+.responsibility-chain{
+  display:flex; justify-content:center; align-items:center; gap:14px; flex-wrap:wrap;
+  font-family: var(--font-head); font-weight:700; font-size:14px;
+  text-transform: uppercase; letter-spacing:.06em;
+  color: var(--ink-soft); margin-bottom: 64px;
+}
+.responsibility-arrow{ color: var(--blue); }
+.focus-num{
+  display:block;
+  font-family: var(--font-head); font-weight:700; font-size:13px;
+  color: var(--blue); margin-bottom: 16px;
 }
 .focus-grid{
   display:grid; grid-template-columns: repeat(4, 1fr); gap: 0;
   border-top: 1px solid var(--line);
 }
 .focus-item{
+  position: relative;
   padding: 34px 26px 34px 0;
   border-left: 1px solid var(--line);
 }
@@ -498,29 +549,58 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
    CASE STUDIES — shared shell
    ============================================================ */
 .case{
-  max-width: var(--wrap);
-  margin: 0 auto;
+  width: 100%;
   padding: 110px var(--gutter);
   border-top: 1px solid var(--line);
+  transition: background-color .3s ease, color .3s ease;
 }
-.case-head{ margin-bottom: 52px; }
-.case-num{
+.case > *{ max-width: var(--wrap); margin-left:auto; margin-right:auto; }
+.chapter-open{
+  position: relative;
+  padding-top: 8px;
+  margin-bottom: 64px;
+  overflow: hidden;
+}
+.chapter-num{
+  position: absolute;
+  top: -0.28em;
+  left: -0.02em;
   font-family: var(--font-head);
-  font-weight: 700;
-  color: var(--blue);
-  font-size: 15px;
+  font-weight: 900;
+  font-size: clamp(6.5rem, 20vw, 14rem);
+  line-height: 1;
+  color: var(--ink);
+  opacity: 0.07;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
 }
-.case-kicker{
-  font-size: 14px; font-weight:600; letter-spacing:.06em;
-  color: var(--ink-soft); margin: 10px 0 14px;
+.chapter-content{ position: relative; z-index: 1; }
+.chapter-kicker{
+  display:block;
+  font-family: var(--font-head); font-weight:700; font-size:12.5px;
+  text-transform: uppercase; letter-spacing:.14em;
+  color: var(--blue); margin-bottom: 22px;
 }
-.case-title{
+.chapter-title{
   font-family: var(--font-head);
-  font-weight: 800;
-  font-size: clamp(1.8rem, 4.6vw, 3.1rem);
-  line-height: 1.14;
-  margin-bottom: 20px;
-  max-width: 16ch;
+  font-weight: 900;
+  font-size: clamp(2.8rem, 8.5vw, 5.6rem);
+  line-height: 0.96;
+  letter-spacing: -0.01em;
+  margin-bottom: 26px;
+}
+.chapter-dek{
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: var(--ink-soft);
+  max-width: 44ch;
+  margin-bottom: 22px;
+}
+
+@media (max-width: 640px){
+  .chapter-num{ font-size: clamp(4.5rem, 28vw, 7rem); }
 }
 .status-tag{
   display:inline-block;
@@ -534,7 +614,7 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
 .status-ongoing{ background: var(--blue-soft); color: var(--blue); }
 .status-manual{ background: var(--bg-alt); color: var(--ink-soft); border:1px solid var(--line); margin-bottom: 22px; display:inline-block; }
 
-.case-body{ max-width: 780px; }
+.case-body{ max-width: 780px; margin-left: 0; margin-right: auto; }
 
 .eyebrow{
   display:block;
@@ -556,8 +636,11 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
 .shift{
   border-top: 1px solid var(--line);
   padding-top: 26px;
-  margin: 40px 0 34px;
+  margin: 40px auto 34px;
+  text-align:center;
+  max-width: 480px;
 }
+.shift-loose{ border-top:0; padding-top:0; margin-top:8px; }
 .shift-from{ font-size:15px; color: var(--ink-soft); margin-bottom:6px; }
 .shift-to{ font-family: var(--font-head); font-weight:700; font-size:18px; color: var(--blue); }
 
@@ -566,8 +649,10 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
   font-weight: 800;
   font-size: clamp(1.3rem, 2.8vw, 1.8rem);
   color: var(--blue);
-  margin: 44px 0 26px;
+  margin: 44px auto 26px;
   line-height:1.25;
+  text-align:center;
+  max-width: 620px;
 }
 
 .diagram-label{
@@ -666,7 +751,8 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
   display:grid; grid-template-columns: repeat(7,1fr);
   gap: 1px; background: var(--line);
   border: 1px solid var(--line);
-  margin: 40px 0 16px;
+  margin: 40px auto 16px;
+  max-width: 660px;
 }
 .cal-day{
   background: var(--bg);
@@ -721,7 +807,7 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
 }
 .flow-arrow{ color: var(--blue); font-weight:400; }
 
-.staircase-wrap{ margin: 48px 0; }
+.staircase-wrap{ margin: 48px auto; max-width: 560px; text-align:center; }
 .staircase{
   display:flex; align-items:flex-end; gap:0;
   height: 260px;
@@ -759,64 +845,53 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
   margin: 4px 0 12px;
 }
 
-/* ---------- Case 04 : Data -> Action — notebook ---------- */
-.case-04{ background: var(--ink); color: #EDEAE1; }
-.case-04 .case-num{ color: #8FB4DE; }
-.case-04 .case-kicker{ color: #B7B2A5; }
-.case-04 .case-body > p{ color: #C9C4B7; }
-.case-04 .diagram-label{ color:#B7B2A5; }
-.case-04 .case-insight{ color: #8FB4DE; }
-.case-04 .evidence-frame{ background: #232019; border-color:#3A362C; border-left-color:#8FB4DE; }
-.case-04 .evidence-frame p{ color:#C9C4B7; }
-.case-04 .evidence-eyebrow{ color:#8FB4DE; }
-
+/* ---------- Case 04 : Data → Action — experiment board (light, same palette as the rest of the site) ---------- */
 .experiment-board{
   display:flex; flex-direction:column; align-items:center;
-  margin: 40px 0 10px;
+  margin: 40px auto 10px;
+  max-width: 620px;
 }
 .board-node{
-  border: 1px solid #3A362C; background: #232019;
-  padding: 20px 26px; text-align:center; max-width: 440px;
+  border: 1px solid var(--line); background: var(--bg-alt);
+  padding: 20px 26px; text-align:center; max-width: 460px;
 }
 .board-tag{
   display:block; font-family: var(--font-head); font-weight:700; font-size:12px;
-  text-transform: uppercase; letter-spacing:.07em; color:#8FB4DE; margin-bottom:8px;
+  text-transform: uppercase; letter-spacing:.07em; color: var(--blue); margin-bottom:8px;
 }
-.board-node p{ margin:0; color:#EDEAE1; font-size:14.5px; }
-.board-line{ width:1px; height:26px; background:#4A4638; }
+.board-node p{ margin:0; color: var(--ink); font-size:14.5px; }
+.board-line{ width:1px; height:26px; background: var(--line); }
 .board-branches{
   display:grid; grid-template-columns: 1fr auto 1fr; gap: 18px; align-items:center;
   width:100%; max-width: 760px; margin-top: 20px;
 }
 .board-branch{
-  border: 1px solid #3A362C; padding: 18px 18px; text-align:center;
+  border: 1px solid var(--line); padding: 18px 18px; text-align:center;
 }
-.branch-tag{ display:block; font-family: var(--font-head); font-weight:700; font-size:12.5px; color:#EDEAE1; margin-bottom:10px; }
+.branch-tag{ display:block; font-family: var(--font-head); font-weight:700; font-size:12.5px; color: var(--ink); margin-bottom:10px; }
 .branch-result{ display:inline-block; font-size:12.5px; font-weight:700; padding:5px 12px; }
-.branch-limited{ background:#2E2A22; color:#C9C4B7; }
-.branch-increase{ background:#22344A; color:#8FB4DE; }
+.branch-limited{ background: var(--bg-alt); color: var(--ink-soft); border: 1px solid var(--line); }
+.branch-increase{ background: var(--blue-soft); color: var(--blue); }
 .board-rethink{ text-align:center; padding:0 4px; }
-.rethink-tag{ display:block; font-family: var(--font-head); font-weight:800; font-size:13px; color:#8FB4DE; margin-bottom:6px; }
-.board-rethink p{ font-size:11.5px; color:#B7B2A5; margin:0; }
+.rethink-tag{
+  display:block; font-family: var(--font-head); font-weight:800; font-size:14px;
+  color: var(--blue); margin-bottom:6px;
+}
+.board-rethink p{ font-size:12px; color: var(--ink-soft); margin:0; }
 
 @media (max-width:640px){
   .board-branches{ grid-template-columns: 1fr; }
 }
 
-.case-04 .shift{ border-top-color:#3A362C; }
-.case-04 .shift-from{ color:#B7B2A5; }
-.case-04 .shift-to{ color:#8FB4DE; }
-.case-04 .eyebrow{ color:#8FB4DE; }
-.case-04 .case-caption{ color:#B7B2A5; }
 .shift-diagram{
-  display:flex; align-items:center; gap:18px;
+  display:flex; align-items:center; justify-content:center; gap:18px;
   font-family: var(--font-head); font-weight:800; font-size: clamp(1.3rem,3.6vw,1.9rem);
-  margin: 8px 0 22px; color:#EDEAE1;
+  margin: 8px 0 22px; color: var(--ink);
 }
-.shift-arrow{ color:#8FB4DE; }
+.shift-arrow{ color: var(--blue); }
 
 /* ---------- Case 05 : Learning Ecosystem — dependency chain + reconciliation loop ---------- */
-.systems-map{ margin: 40px 0 8px; }
+.systems-map{ margin: 40px auto 8px; max-width: 460px; text-align:center; }
 .sys-chain{
   display:flex; flex-direction:column; align-items:center; gap:10px;
   padding: 34px 20px; border: 1px solid var(--line);
@@ -833,83 +908,48 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
 }
 .sys-break-tag{ font-size:11px; text-transform:uppercase; letter-spacing:.07em; }
 
-.loop-diagram{ margin: 44px 0; }
+.loop-diagram{ margin: 44px auto; max-width: 460px; text-align:center; }
 .loop-steps{
   display:flex; flex-direction:column; gap:8px;
   font-family: var(--font-head); font-weight:700; font-size:15px;
   border: 1px dashed var(--line); padding: 26px;
+  text-align:left;
 }
 .loop-arrow{ color: var(--ink-soft); font-weight:400; }
 .loop-close{ color: var(--blue); }
 .loop-close span{ font-weight:400; font-size:13px; color: var(--ink-soft); margin-left:8px; }
 
 /* ============================================================
-   RECOGNITION SECTION
-   ============================================================ */
-.recognition{ text-align:center; }
-.recognition .section-head{ display:block; text-align:center; border-bottom:0; }
-.mcrr-chain{
-  display:flex; justify-content:center; align-items:center; gap:14px; flex-wrap:wrap;
-  font-family: var(--font-head); font-weight:700; font-size:15px;
-  color: var(--ink-soft); margin-bottom: 40px;
-}
-.mcrr-arrow{ color: var(--blue); }
-.recognition-formula{
-  display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap: 22px;
-  margin: 50px 0 24px;
-}
-.formula-part{ display:flex; flex-direction:column; align-items:center; gap:6px; }
-.formula-num{ font-family: var(--font-head); font-weight:800; font-size: clamp(2rem,5vw,3rem); color: var(--blue); }
-.formula-label{ font-size: 13px; color: var(--ink-soft); text-transform:uppercase; letter-spacing:.06em; }
-.formula-final{ font-family: var(--font-head); font-weight:700; font-size:16px; color: var(--ink); text-transform:none; letter-spacing:0; }
-.formula-op{ font-family: var(--font-head); font-weight:700; font-size: 24px; color: var(--ink-soft); }
-
-.recognition-chain{
-  display:flex; justify-content:center; align-items:center; gap: 16px;
-  font-family: var(--font-head); font-weight:700; font-size:15px;
-  color: var(--ink-soft); margin-bottom: 60px;
-}
-.chain-arrow{ color: var(--blue); }
-
-.recognition-copy{
-  max-width: 62ch; margin: 0 auto 46px; color: var(--ink-soft);
-}
-.award-row{ display:flex; justify-content:center; gap: 20px; flex-wrap:wrap; margin-bottom: 30px; }
-.award{
-  border: 1px solid var(--line); border-radius: 999px;
-  padding: 10px 22px; font-size: 14px; font-weight:600;
-}
-.illustrative-note{ font-size: 13px; color: var(--ink-soft); font-style: italic; }
-
-@media (max-width:560px){
-  .recognition-formula{ flex-direction:column; }
-  .recognition-chain{ flex-direction:column; }
-}
-
-/* ============================================================
    CONTACT
    ============================================================ */
 .contact{
   text-align:center;
-  padding: 130px var(--gutter) 90px;
+  padding: 150px var(--gutter) 110px;
   border-top: 1px solid var(--line);
 }
-.contact-title{
-  font-family: var(--font-head); font-weight:800;
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-bottom: 40px;
+.contact-inner{ max-width: 640px; margin: 0 auto; }
+.contact-kicker{
+  font-family: var(--font-head); font-weight:600; font-style: italic;
+  font-size: 15px; color: var(--ink-soft);
+  margin-bottom: 28px;
 }
-.contact-name{ font-family: var(--font-head); font-weight:700; font-size:18px; }
+.contact-title{
+  font-family: var(--font-head); font-weight:900;
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  margin-bottom: 48px;
+}
+.contact-name{ font-family: var(--font-head); font-weight:700; font-size:19px; }
 .contact-role{ color: var(--ink-soft); margin-top:6px; }
 .contact-tags{ color: var(--ink-soft); font-size:14px; margin-top: 20px; }
 .contact-links{
-  margin-top: 42px;
-  display:flex; justify-content:center; gap: 30px; flex-wrap:wrap;
+  margin-top: 52px;
+  display:flex; justify-content:center; gap: 40px; flex-wrap:wrap;
 }
 .contact-links a{
   text-decoration:none;
-  font-weight:600;
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 3px;
+  font-family: var(--font-head); font-weight:700; font-size:18px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 5px;
+  transition: color .25s var(--ease), border-color .25s var(--ease);
 }
 .contact-links a:hover{ color: var(--blue); border-color: var(--blue); }
