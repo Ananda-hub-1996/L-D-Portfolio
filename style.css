@@ -557,46 +557,180 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
   font-size: clamp(1.2rem, 2.6vw, 1.6rem);
   line-height: 1.4;
   max-width: 62ch;
-  margin: 0 auto 44px;
+  margin: 0 auto 56px;
   text-align: center;
 }
-.responsibility-chain{
-  display:flex; justify-content:center; align-items:center; gap:14px; flex-wrap:wrap;
-  font-family: var(--font-head); font-weight:700; font-size:14px;
-  text-transform: uppercase; letter-spacing:.06em;
-  color: var(--ink-soft); margin-bottom: 64px;
+
+.ldp-transition{ text-align: center; margin-bottom: 64px; }
+.ldp-transition .statement-line{ font-size: clamp(1.3rem, 3.4vw, 2rem); }
+
+/* ---------- L&D practice system: hub-and-spoke, no cards ---------- */
+.ldp-system{ max-width: 780px; margin: 0 auto; }
+
+.ldp-grid{
+  display: grid;
+  grid-template-columns: minmax(160px, 200px) 44px minmax(160px, 200px) 44px minmax(160px, 200px);
+  grid-template-rows: auto 40px auto 40px auto;
+  justify-content: center;
+  grid-template-areas:
+    ".    .     top    .     .    "
+    ".    .     vtop   .     .    "
+    "left hleft hub    hright right"
+    ".    .     vbot   .     .    "
+    ".    .     bottom .     .    ";
 }
-.responsibility-arrow{ color: var(--blue); }
-.focus-num{
-  display:block;
-  font-family: var(--font-head); font-weight:700; font-size:13px;
-  color: var(--blue); margin-bottom: 16px;
+
+.ldp-hub{
+  grid-area: hub;
+  align-self: center;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px 16px;
+  opacity: 0;
+  transform: scale(.92);
+  transition: opacity .5s var(--ease), transform .35s var(--ease), border-color .3s ease, box-shadow .3s ease;
 }
-.focus-grid{
-  display:grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-  border-top: 1px solid var(--line);
+.ldp-system.is-visible .ldp-hub{ opacity: 1; transform: scale(1); transition-delay: .05s; }
+.ldp-hub-label{
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 900;
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  color: var(--ink);
+  margin-bottom: 6px;
 }
-.focus-item{
-  position: relative;
-  padding: 34px 26px 34px 0;
-  border-left: 1px solid var(--line);
-}
-.focus-item:first-child{ border-left:0; padding-left:0; }
-.focus-item h3{
+.ldp-hub-sub{
+  display: block;
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: 17px;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--blue);
   margin-bottom: 14px;
 }
-.focus-item p{ color: var(--ink-soft); font-size: 15px; }
-@media (max-width: 900px){
-  .focus-grid{ grid-template-columns: repeat(2,1fr); }
-  .focus-item:nth-child(3){ border-left:0; }
+.ldp-hub-chain{
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: .02em;
+  color: var(--ink-soft);
 }
-@media (max-width: 560px){
-  .focus-grid{ grid-template-columns: 1fr; }
-  .focus-item{ border-left:0 !important; border-top:1px solid var(--line); padding:26px 0; }
-  .focus-item:first-child{ border-top:0; }
+
+.ldp-node{
+  text-align: center;
+  padding: 4px 6px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+}
+.ldp-node-top{    grid-area: top;    }
+.ldp-node-right{  grid-area: right;  }
+.ldp-node-bottom{ grid-area: bottom; }
+.ldp-node-left{   grid-area: left;   }
+.ldp-system.is-visible .ldp-node{ opacity: 1; transform: none; }
+.ldp-system.is-visible .ldp-node-top{    transition-delay: .18s; }
+.ldp-system.is-visible .ldp-node-right{  transition-delay: .32s; }
+.ldp-system.is-visible .ldp-node-bottom{ transition-delay: .46s; }
+.ldp-system.is-visible .ldp-node-left{   transition-delay: .6s;  }
+
+.ldp-node-num{
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+.ldp-node-title{
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 1.25;
+  margin-bottom: 8px;
+  transition: color .25s ease;
+}
+.ldp-node-copy{
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* connectors — thin lines only, no arrows needed at this scale */
+.ldp-conn{ transition: border-color .3s ease; }
+.ldp-conn-top,
+.ldp-conn-bottom{
+  justify-self: center;
+  width: 0;
+  border-left: 1px solid var(--line);
+  transform: scaleY(0);
+  transition: transform .5s var(--ease), border-color .3s ease;
+}
+.ldp-conn-left,
+.ldp-conn-right{
+  align-self: center;
+  height: 0;
+  border-top: 1px solid var(--line);
+  transform: scaleX(0);
+  transition: transform .5s var(--ease), border-color .3s ease;
+}
+.ldp-conn-top{    grid-area: vtop;   transform-origin: bottom; }
+.ldp-conn-bottom{ grid-area: vbot;   transform-origin: top;    }
+.ldp-conn-left{   grid-area: hleft;  transform-origin: right;  }
+.ldp-conn-right{  grid-area: hright; transform-origin: left;   }
+.ldp-system.is-visible .ldp-conn-top{    transform: scaleY(1); transition-delay: .12s; }
+.ldp-system.is-visible .ldp-conn-right{  transform: scaleX(1); transition-delay: .26s; }
+.ldp-system.is-visible .ldp-conn-bottom{ transform: scaleY(1); transition-delay: .4s;  }
+.ldp-system.is-visible .ldp-conn-left{   transform: scaleX(1); transition-delay: .54s; }
+
+/* hover: a node lights up itself, its connector, and the hub it feeds */
+.ldp-node:hover .ldp-node-num,
+.ldp-node:hover .ldp-node-title{ color: var(--blue); }
+
+.ldp-grid:has(.ldp-node-top:hover) .ldp-conn-top,
+.ldp-grid:has(.ldp-node-right:hover) .ldp-conn-right,
+.ldp-grid:has(.ldp-node-bottom:hover) .ldp-conn-bottom,
+.ldp-grid:has(.ldp-node-left:hover) .ldp-conn-left{
+  border-color: var(--blue);
+}
+.ldp-grid:has(.ldp-node-top:hover) .ldp-hub,
+.ldp-grid:has(.ldp-node-right:hover) .ldp-hub,
+.ldp-grid:has(.ldp-node-bottom:hover) .ldp-hub,
+.ldp-grid:has(.ldp-node-left:hover) .ldp-hub{
+  border-color: var(--blue);
+  transform: scale(1.03);
+}
+
+.ldp-caption{
+  margin-top: 40px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+}
+
+@media (max-width: 760px){
+  .ldp-grid{
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    row-gap: 0;
+    grid-template-areas:
+      "hub"
+      "top"
+      "right"
+      "bottom"
+      "left";
+  }
+  .ldp-conn{ display: none; }
+  .ldp-hub{ margin-bottom: 8px; }
+  .ldp-node{
+    text-align: left;
+    border-top: 1px solid var(--line);
+    padding: 22px 0 4px;
+  }
+  .ldp-node-copy{ font-size: 13.5px; }
 }
 
 /* ============================================================
