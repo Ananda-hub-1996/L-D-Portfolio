@@ -124,18 +124,26 @@
 
     <h3 class="ld-model-heading reveal">My L&amp;D thinking model</h3>
 
-    <div class="ld-cycle reveal" role="img" aria-label="A six-stage iterative loop: 01 Question, 02 Understand, 03 Diagnose, 04 Design, 05 Test, 06 Learn — with Learn feeding back into Question. At the centre: systems thinking — understand the system before deciding on the intervention.">
-      <div class="ld-cycle-grid">
-        <div class="ld-stage ld-stage-q"><span class="ld-stage-num">01</span><span class="ld-stage-label">Question</span></div>
-        <div class="ld-stage ld-stage-u"><span class="ld-stage-num">02</span><span class="ld-stage-label">Understand</span></div>
-        <div class="ld-stage ld-stage-d"><span class="ld-stage-num">03</span><span class="ld-stage-label">Diagnose</span></div>
-        <div class="ld-stage ld-stage-de"><span class="ld-stage-num">04</span><span class="ld-stage-label">Design</span></div>
-        <div class="ld-stage ld-stage-t"><span class="ld-stage-num">05</span><span class="ld-stage-label">Test</span></div>
-        <div class="ld-stage ld-stage-l"><span class="ld-stage-num">06</span><span class="ld-stage-label">Learn</span></div>
-        <div class="ld-center">
-          <span class="ld-center-title">Systems thinking</span>
-          <span class="ld-center-sub">Understand the system before deciding on the intervention.</span>
+    <div class="ld-cycle reveal" role="img" aria-label="A six-stage iterative loop: 01 Question, 02 Understand, 03 Diagnose, then down to 04 Design, 05 Test, 06 Learn, which climbs back up into Question — with systems thinking as the anchor in the middle: understand the system before deciding on the intervention.">
+      <div class="ld-loop">
+        <div class="ld-node ld-node-q"><span class="ld-node-num">01</span><span class="ld-node-label">Question</span></div>
+        <span class="ld-hconn" aria-hidden="true">→</span>
+        <div class="ld-node ld-node-u"><span class="ld-node-num">02</span><span class="ld-node-label">Understand</span></div>
+        <span class="ld-hconn" aria-hidden="true">→</span>
+        <div class="ld-node ld-node-d"><span class="ld-node-num">03</span><span class="ld-node-label">Diagnose</span></div>
+
+        <div class="ld-rail ld-rail-left" aria-hidden="true"><span class="ld-rail-arrow">↑</span></div>
+        <div class="ld-anchor">
+          <span class="ld-anchor-title">Systems thinking</span>
+          <span class="ld-anchor-sub">Understand the system before deciding on the intervention.</span>
         </div>
+        <div class="ld-rail ld-rail-right" aria-hidden="true"><span class="ld-rail-arrow">↓</span></div>
+
+        <div class="ld-node ld-node-l"><span class="ld-node-num">06</span><span class="ld-node-label">Learn</span></div>
+        <span class="ld-hconn ld-hconn-back" aria-hidden="true">←</span>
+        <div class="ld-node ld-node-t"><span class="ld-node-num">05</span><span class="ld-node-label">Test</span></div>
+        <span class="ld-hconn ld-hconn-back" aria-hidden="true">←</span>
+        <div class="ld-node ld-node-de"><span class="ld-node-num">04</span><span class="ld-node-label">Design</span></div>
       </div>
     </div>
     <p class="ld-cycle-caption reveal">Learn feeds back into Question — the cycle repeats rather than ends.</p>
