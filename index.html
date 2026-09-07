@@ -380,11 +380,19 @@
       <p class="case-caption reveal">Engagement isn't always a motivation problem. Sometimes the experience needs to make participation easier.</p>
 
       <figure class="evidence-block evidence-hero reveal">
-        <div class="evidence-frame">
-          <span class="evidence-eyebrow">Evidence</span>
-          <p>Workplace learning screenshot / post to be added</p>
+        <span class="evidence-eyebrow">Evidence</span>
+        <div class="evidence-gallery">
+          <button type="button" class="evidence-thumb" data-full="images/case02-1-teaser.png" data-caption="Workplace learning — teaser post, Week 1: Listen better.">
+            <img src="images/case02-1-teaser.png" alt="Workplace learning teaser post: Listen Better, Week 1 challenge — ask one more question before you respond." loading="lazy">
+          </button>
+          <button type="button" class="evidence-thumb" data-full="images/case02-2-setting-the-scene.png" data-caption="Workplace learning — setting the scene, Week 1: Listen better.">
+            <img src="images/case02-2-setting-the-scene.png" alt="Workplace learning post: Listen Better — pause, ask, then respond challenge for one conversation this week." loading="lazy">
+          </button>
+          <button type="button" class="evidence-thumb" data-full="images/case02-3-action-based-learning.png" data-caption="Workplace learning — action-based learning prompt.">
+            <img src="images/case02-3-action-based-learning.png" alt="Workplace learning post: Ready to level up — one week, one skill, one small action." loading="lazy">
+          </button>
         </div>
-        <figcaption>Evidence placeholder — workplace learning screenshot / post</figcaption>
+        <figcaption>Actual workplace learning posts — teaser, scene-setting and the action prompt</figcaption>
       </figure>
 
       <div class="shift reveal">
@@ -444,11 +452,13 @@
       </div>
 
       <figure class="evidence-block reveal">
-        <div class="evidence-frame">
-          <span class="evidence-eyebrow">Evidence</span>
-          <p>AI Academy course visual to be added</p>
+        <span class="evidence-eyebrow">Evidence</span>
+        <div class="evidence-gallery evidence-gallery-single">
+          <button type="button" class="evidence-thumb" data-full="images/case03-ai-academy-learning-journey.png" data-caption="AI Academy — the learning journey, from AI Explorer to AI Guardian.">
+            <img src="images/case03-ai-academy-learning-journey.png" alt="AI Academy learning journey poster: four levels — AI Explorer, AI Whisperer, AI Collaborator, AI Guardian." loading="lazy">
+          </button>
         </div>
-        <figcaption>Evidence placeholder — AI Academy course visual</figcaption>
+        <figcaption>AI Academy course visual — the learning journey</figcaption>
       </figure>
 
       <div class="conscious-block reveal">
@@ -522,11 +532,13 @@
       <p class="case-caption reveal">Data becomes valuable when it changes what you do next — not when it simply becomes a report.</p>
 
       <figure class="evidence-block evidence-hero reveal">
-        <div class="evidence-frame">
-          <span class="evidence-eyebrow">Evidence</span>
-          <p>Completion chart to be added</p>
+        <span class="evidence-eyebrow">Evidence</span>
+        <div class="evidence-gallery evidence-gallery-single">
+          <button type="button" class="evidence-thumb" data-full="images/case04-course-completion.png" data-caption="Course completion status — Professional Excellence Refresher Series.">
+            <img src="images/case04-course-completion.png" alt="Pie chart of course completion status: 80.6% not started, 15.7% completed, 3.7% in progress." loading="lazy">
+          </button>
         </div>
-        <figcaption>Evidence placeholder — completion chart</figcaption>
+        <figcaption>Course completion status — Professional Excellence Refresher Series</figcaption>
       </figure>
 
       <span class="eyebrow eyebrow-center reveal">The insight</span>
@@ -615,6 +627,15 @@
   </footer>
 
 </main>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-backdrop" data-lightbox-close></div>
+  <div class="lightbox-content" role="dialog" aria-modal="true" aria-label="Evidence image preview">
+    <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close image preview">&times;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
