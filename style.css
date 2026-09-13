@@ -805,6 +805,20 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
   margin-bottom: 22px;
 }
 
+.case-role{
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 52ch;
+  margin-top: 18px;
+}
+.case-role-label{
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--blue);
+}
+
 @media (max-width: 640px){
   .chapter-num{ font-size: clamp(4.5rem, 28vw, 7rem); }
 }
