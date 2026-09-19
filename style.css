@@ -1295,3 +1295,192 @@ h1,h2,h3,h4,p,dl,dd{ margin:0; }
   .lightbox-close{ top: -40px; right: 0; width: 32px; height: 32px; font-size: 20px; }
   .lightbox-caption{ font-size: 13px; margin-top: 14px; }
 }
+
+/* ============================================================
+   02 — HOW I'D APPROACH AN L&D PROBLEM
+   Editorial field-guide layout. Uses existing tokens only;
+   inherits dark values from .dark-panel on the section.
+   ============================================================ */
+.apr-statement{ text-align:center; margin-bottom: 84px; }
+.apr-statement .statement-line{ font-size: clamp(1.4rem, 3.4vw, 2.2rem); }
+
+/* --- the four steps: numbered rail + body, separated by hairlines --- */
+.apr-steps{ border-top: 1px solid var(--line); }
+.apr-step{
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0 40px;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--line);
+}
+.apr-step-mark{ padding-top: 4px; }
+.apr-step-body{ min-width: 0; }
+.apr-step-num{
+  display:block;
+  font-family: var(--font-head); font-weight: 900;
+  font-size: 2.6rem; line-height: 1;
+  color: var(--ink); opacity: .16;
+}
+.apr-step-kicker{
+  display:block; margin-top: 8px;
+  font-family: var(--font-head); font-weight: 700; font-size: 11.5px;
+  text-transform: uppercase; letter-spacing: .12em;
+  color: var(--blue);
+}
+.apr-step-title{
+  font-family: var(--font-head); font-weight: 800;
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  line-height: 1.3; margin-bottom: 14px;
+}
+.apr-step-text{ color: var(--ink-soft); font-size: 15.5px; max-width: 58ch; margin-bottom: 26px; }
+.apr-note{ color: var(--ink-soft); font-size: 13.5px; font-style: italic; margin-top: 18px; }
+
+/* step 01 — narrowing line of enquiry */
+.apr-drill{ display:flex; flex-direction:column; gap: 2px; }
+.apr-drill-item{
+  position: relative;
+  font-family: var(--font-head); font-weight: 700; font-size: 14.5px;
+  padding: 9px 0 9px 22px;
+  margin-left: calc(var(--d) * 26px);
+  color: var(--ink-soft);
+}
+.apr-drill-item::before{
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  border-left: 1px solid var(--line);
+}
+.apr-drill-item::after{
+  content: '';
+  position: absolute; left: 0; top: 50%;
+  width: 12px; height: 1px; background: var(--line);
+}
+.apr-drill-last{ color: var(--blue); }
+.apr-drill-last::before,
+.apr-drill-last::after{ border-color: var(--blue); background: var(--blue); }
+
+/* step 02 — diagnosis branching into four paths */
+.apr-branch{ display:grid; grid-template-columns: auto 1fr; gap: 0 28px; align-items:center; }
+.apr-branch-source{
+  font-family: var(--font-head); font-weight: 800; font-size: 13px;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--blue);
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  padding: 10px 0; border-left: 1px solid var(--blue);
+  padding-left: 0; margin-left: 2px;
+  justify-self: start;
+}
+.apr-paths{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); }
+.apr-path{ background: var(--bg-alt); padding: 16px 18px; }
+.apr-path-name{
+  display:block;
+  font-family: var(--font-head); font-weight: 800; font-size: 13.5px;
+  text-transform: uppercase; letter-spacing: .07em;
+  margin-bottom: 6px;
+}
+.apr-path-desc{ display:block; color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
+.apr-path-learning .apr-path-name{ color: var(--blue); }
+
+.apr-contrast{ display:flex; flex-wrap:wrap; align-items:center; gap: 18px; margin-top: 22px; }
+.apr-contrast-off,
+.apr-contrast-on{ font-family: var(--font-head); font-weight: 700; font-size: 14px; }
+.apr-contrast-off{ color: var(--ink-soft); text-decoration: line-through; text-decoration-thickness: 1px; opacity: .7; }
+.apr-contrast-on{ color: var(--blue); }
+
+/* step 03 — smallest test first */
+.apr-scale{ display:flex; flex-wrap:wrap; align-items:center; gap: 14px; }
+.apr-scale-step{
+  font-family: var(--font-head); font-weight: 700; font-size: 14px;
+  border: 1px solid var(--line); padding: 10px 16px;
+}
+.apr-scale-small{ border-color: var(--blue); color: var(--blue); }
+.apr-scale-big{ color: var(--ink-soft); }
+.apr-scale-arrow{ color: var(--blue); }
+
+/* step 04 — link back to the Data → Action case */
+.apr-link{
+  display:inline-block;
+  font-family: var(--font-head); font-weight: 700; font-size: 14px;
+  color: var(--blue); text-decoration: none;
+  border-bottom: 1px solid var(--line); padding-bottom: 3px;
+  transition: border-color .25s var(--ease);
+}
+.apr-link:hover{ border-color: var(--blue); }
+
+/* --- toolkit --- */
+.apr-toolkit{ margin-top: 90px; }
+.apr-toolkit-head{ margin-bottom: 40px; }
+.apr-toolkit-note{ color: var(--ink-soft); font-size: 15px; max-width: 54ch; }
+.apr-tools{
+  display:grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1px; background: var(--line);
+  border: 1px solid var(--line);
+}
+.apr-tool{ background: var(--bg); padding: 28px 26px; }
+.apr-tool:last-child{ grid-column: 1 / -1; }
+.apr-tool-num{
+  display:block;
+  font-family: var(--font-head); font-weight: 700; font-size: 11px;
+  letter-spacing: .1em; color: var(--blue); margin-bottom: 10px;
+}
+.apr-tool-name{
+  font-family: var(--font-head); font-weight: 800; font-size: 16px;
+  margin-bottom: 8px;
+}
+.apr-tool-use{ color: var(--ink-soft); font-size: 13.5px; line-height: 1.5; margin-bottom: 16px; }
+.apr-tool-set{ display:flex; flex-wrap:wrap; align-items:baseline; gap: 6px 12px; margin-top: 10px; }
+.apr-set-label{
+  font-family: var(--font-head); font-weight: 700; font-size: 10.5px;
+  text-transform: uppercase; letter-spacing: .09em;
+  color: var(--ink-soft); min-width: 82px;
+}
+.apr-set-items{ font-family: var(--font-head); font-weight: 700; font-size: 13.5px; }
+.apr-set-items i{ font-style: normal; color: var(--blue); padding: 0 8px; }
+
+.apr-tool-q{
+  font-family: var(--font-head); font-weight: 700; font-size: 14.5px;
+  line-height: 1.45; border-left: 2px solid var(--blue);
+  padding-left: 14px; margin-bottom: 12px;
+}
+.apr-tool-a{ color: var(--ink-soft); font-size: 13.5px; line-height: 1.5; }
+.apr-tool-caveat{ color: var(--ink-soft); font-size: 12px; font-style: italic; opacity: .8; margin-top: 10px; }
+
+.apr-kirk{ display:flex; flex-direction:column; }
+.apr-kirk-row{
+  display:flex; align-items:center; gap: 12px;
+  font-family: var(--font-head); font-weight: 700; font-size: 14px;
+  padding: 9px 0; border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+.apr-kirk-row:first-child{ border-top: 0; }
+.apr-kirk-lvl{
+  font-size: 11px; letter-spacing: .06em;
+  color: var(--ink-soft); min-width: 26px;
+}
+.apr-kirk-start{ color: var(--ink); }
+.apr-kirk-start .apr-kirk-lvl{ color: var(--blue); }
+.apr-kirk-start em{
+  font-style: normal; font-size: 10.5px; text-transform: uppercase;
+  letter-spacing: .09em; color: var(--blue);
+}
+
+/* --- responsive --- */
+@media (max-width: 860px){
+  .apr-tools{ grid-template-columns: 1fr; }
+  .apr-tool:last-child{ grid-column: auto; }
+}
+@media (max-width: 720px){
+  .apr-step{ grid-template-columns: 1fr; gap: 0; padding: 36px 0; }
+  .apr-step-mark{ display:flex; align-items:baseline; gap: 12px; margin-bottom: 16px; padding-top: 0; }
+  .apr-step-num{ font-size: 1.8rem; }
+  .apr-step-kicker{ margin-top: 0; }
+  .apr-paths{ grid-template-columns: 1fr; }
+  .apr-branch{ grid-template-columns: 1fr; gap: 14px; }
+  .apr-branch-source{
+    writing-mode: horizontal-tb; transform: none;
+    border-left: 0; border-bottom: 1px solid var(--blue);
+    padding: 0 0 8px; margin-left: 0;
+  }
+  .apr-drill-item{ margin-left: calc(var(--d) * 14px); }
+  .apr-statement{ margin-bottom: 60px; }
+  .apr-toolkit{ margin-top: 64px; }
+}
